@@ -19,8 +19,9 @@ jobs:
           tools: composer:v2
           mode: store
           working-directory: $GITHUB_WORKSPACE
+          magento_version: 2.4.7
 
       - run: composer install
         name: Composer install
         shell: bash
-        working-directory: ${{ steps.setup-magento.outputs.path }}:
+        working-directory: ${{ steps.setup-magento.outputs.path }}
