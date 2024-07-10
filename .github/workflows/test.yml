@@ -20,3 +20,5 @@ jobs:
             tools: composer:v2
             mode: extension
             magento_version: magento/project-community-edition:2.4.7
+
+        - run: composer install
