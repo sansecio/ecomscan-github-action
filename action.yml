@@ -3,7 +3,7 @@ author: Sansec
 
 jobs:
   ecomscan:
-    runs-on: ubuntu-latest
+    using: 'composite'
     inputs:
       key:
         description: 'License key'
