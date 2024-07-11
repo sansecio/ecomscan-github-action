@@ -16,5 +16,8 @@ runs:
   steps:
   - uses: actions/checkout@v2
   - run: wget https://ecomscan.com/downloads/linux-amd64/ecomscan
+    shell: bash
   - run: chmod +x ecomscan
+    shell: bash
   - run: ./ecomscan --key=${{ inputs.key }} --format=csv ${{ inputs.directory }}
+    shell: bash
