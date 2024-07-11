@@ -19,5 +19,9 @@ runs:
     shell: bash
   - run: chmod +x ecomscan
     shell: bash
-  - run: [[ $(./ecomscan --key=${{ inputs.key }} --format=csv ${{ inputs.directory }}) -ne 0 ]] && false
+  - run: |
+      output=$(./ecomscan --key=${{ inputs.key }} --format=csv ${{ inputs.directory }})
+      if [ -n "$output" ]; then
+        exit 1
+      fi
     shell: bash
