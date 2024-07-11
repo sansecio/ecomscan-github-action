@@ -1,0 +1,20 @@
+name: eComscan
+author: Sansec
+
+jobs:
+  ecomscan:
+    runs-on: ubuntu-latest
+    inputs:
+      key:
+        description: 'License key'
+        default: 'trial'
+        required: false
+      directory:
+        description: 'Directory to scan'
+        default: '${{ github.workspace }}'
+        required: false
+    steps:
+    - uses: actions/checkout@v2
+    - run: wget https://ecomscan.com/downloads/linux-amd64/ecomscan
+    - run: chmod +x ecomscan
+    - run: ./ecomscan --key=${{ inputs.key }} --format=csv ${{ inputs.directory }}
