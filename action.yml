@@ -1,20 +1,20 @@
 name: eComscan
 author: Sansec
 
-jobs:
-  ecomscan:
-    using: 'composite'
-    inputs:
-      key:
-        description: 'License key'
-        default: 'trial'
-        required: false
-      directory:
-        description: 'Directory to scan'
-        default: '${{ github.workspace }}'
-        required: false
-    steps:
-    - uses: actions/checkout@v2
-    - run: wget https://ecomscan.com/downloads/linux-amd64/ecomscan
-    - run: chmod +x ecomscan
-    - run: ./ecomscan --key=${{ inputs.key }} --format=csv ${{ inputs.directory }}
+inputs:
+  key:
+    description: 'License key'
+    default: 'trial'
+    required: false
+  directory:
+    description: 'Directory to scan'
+    default: '${{ github.workspace }}'
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+  - uses: actions/checkout@v2
+  - run: wget https://ecomscan.com/downloads/linux-amd64/ecomscan
+  - run: chmod +x ecomscan
+  - run: ./ecomscan --key=${{ inputs.key }} --format=csv ${{ inputs.directory }}
