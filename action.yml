@@ -20,8 +20,11 @@ runs:
   - run: chmod +x ecomscan
     shell: bash
   - run: |
-      output=$(./ecomscan --key=${{ inputs.key }} --format=csv ${{ inputs.directory }})
+      output=$(./ecomscan --key="$ECOMSCAN_KEY" --format=csv "$ECOMSCAN_DIRECTORY")
       if [ -n "$output" ]; then
         exit 1
       fi
     shell: bash
+    env:
+      ECOMSCAN_KEY: ${{ inputs.key }}
+      ECOMSCAN_DIRECTORY: ${{ inputs.directory }}
